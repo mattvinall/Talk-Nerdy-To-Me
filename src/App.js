@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from "./firebase";
 
+
 // GIMME DA ROOT GIMME DA ROOT 
 const dbRef = firebase.database().ref();
 
@@ -31,18 +32,32 @@ class App extends Component {
     })
   }
 
+  handleChange = (e) => {
+    console.log(e.target.value);
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>Talk Nerdy To Me</h1>
-        <button onClick={this.randomizeJoke}>Tell Me A Joke</button>
+        <header>
+          <h1><span>🤓</span>Talk Nerdy To Me<span>🤓</span></h1>
+          <div className="buttonContainer">
+            <button type="button" className="btn" onClick={this.randomizeJoke}>Tell Me A Joke</button>
+          </div>
+        </header>
         <section>
           {
+            // conditional render 
             this.state.randomJoke !== null &&
             (
-              <div>
-                <p>{this.state.randomJoke.question}</p>
-                <p>{this.state.randomJoke.answer}</p>
+              <div className="wrapper">
+                <p className="question">Q:{this.state.randomJoke.question}</p>
+                <p className="answer">A:{this.state.randomJoke.answer}</p>
+
+                <section className="reactions">
+                  <button onClick={this.handleChange}><i className="icon like is-large"></i></button>
+                  <button onClick={this.handleChange}><i className="icon like is-large flip"></i></button>
+                </section>
               </div>
             )
           }

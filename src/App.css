@@ -1,32 +1,72 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+html, body {
+  font-size: 62.5%;
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background: url(./assets/desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 100px;
+  background-position-y: -75px;
+  background-color: #232323;
+  color: #fff;
+}
+
+h1, h2, h3, p, {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
   text-align: center;
+  margin-top: 50px;
+  padding-bottom: 25px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+header {
+  margin-top: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.buttonContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn {
+  font-family: 'Press Start 2P';
+  text-align: center;
+  padding: 20px 40px;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  font-size: 2.5rem;
+  margin-left: 12%;
+  margin-top: 25px;
+  padding-top: 25px;
+}
+
+i {
+  margin: 0 20px;
+}
+
+.flip {
+  transform: rotate(180deg);
+  padding-left: 50px;
+}
+
+.reactions {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
