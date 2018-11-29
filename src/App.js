@@ -11,21 +11,24 @@ class App extends Component {
     super();
     this.state = {
       jokes: [],
-      randomJoke: []
+      randomJoke: null
     }
   }
 
   componentDidMount() {
     dbRef.on('value', (snapshot) => {
       this.setState({
-        jokes: snapshot.val()
+        jokes: snapshot.val(),
+        // randomJoke
       })
     })
   }
 
   randomizeJoke = () => {
     const randomJoke = this.state.jokes[Math.floor(Math.random() * this.state.jokes.length)];
-    console.log(randomJoke);
+    this.setState({
+      randomJoke
+    })
   }
 
   render() {
@@ -35,14 +38,13 @@ class App extends Component {
         <button onClick={this.randomizeJoke}>Tell Me A Joke</button>
         <section>
           {
-            this.state.jokes.map(joke => {
-              return (
-                <div>
-                  <p>{this.state.randomJoke.question}</p>
-                  <p>{this.state.randomJoke.answer}</p>
-                </div>
-              );
-            })
+            this.state.randomJoke !== null &&
+            (
+              <div>
+                <p>{this.state.randomJoke.question}</p>
+                <p>{this.state.randomJoke.answer}</p>
+              </div>
+            )
           }
         </section>
       </div>
