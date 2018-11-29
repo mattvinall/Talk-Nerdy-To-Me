@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import firebase from "./firebase";
+
+// GIMME DA ROOT GIMME DA ROOT 
+const dbRef = firebase.database().ref();
+
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      jokes: []
+    }
+  }
+
+  componentDidMount() {
+    dbRef.on('value', (snapshot) => {
+      this.setState({
+        jokes: snapshot.val()
+      })
+    })
+  }
+
+  randomizeJoke = () => {
+
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Talk Nerdy To Me</h1>
+        <button onClick={this.randomizeJoke}>Tell Me A Joke</button>
+        <section>
+          {
+            this.state.jokes.map(joke => {
+              return (
+                <div>
+                  <p>{joke.question}</p>
+                  <p>{joke.answer}</p>
+                </div>
+              );
+            })
+          }
+        </section>
       </div>
     );
   }
