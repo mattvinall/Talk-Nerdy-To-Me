@@ -10,7 +10,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      jokes: []
+      jokes: [],
+      randomJoke: []
     }
   }
 
@@ -23,8 +24,10 @@ class App extends Component {
   }
 
   randomizeJoke = () => {
-
+    const randomJoke = this.state.jokes[Math.floor(Math.random() * this.state.jokes.length)];
+    console.log(randomJoke);
   }
+
   render() {
     return (
       <div className="App">
@@ -35,8 +38,8 @@ class App extends Component {
             this.state.jokes.map(joke => {
               return (
                 <div>
-                  <p>{joke.question}</p>
-                  <p>{joke.answer}</p>
+                  <p>{this.state.randomJoke.question}</p>
+                  <p>{this.state.randomJoke.answer}</p>
                 </div>
               );
             })
