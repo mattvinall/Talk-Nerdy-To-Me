@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from "./firebase";
+import Header from "./Header";
+import Reactions from './Reactions';
 
 
 // GIMME DA ROOT GIMME DA ROOT 
 const dbRef = firebase.database().ref();
 
-
+// App class
 class App extends Component {
   constructor() {
     super();
     this.state = {
       jokes: [],
-      randomJoke: null
+      randomJoke: null,
+      likes: 0, // set initial state to 0 ++ will increment when user clicks (thumbs up)
+      dislikes: 0, // set initial state to 0 -- will decremement when user clicks (thumbs down)
+      total: 0
     }
   }
 
   componentDidMount() {
+    // snapshot of values in firebase
     dbRef.on('value', (snapshot) => {
       this.setState({
         jokes: snapshot.val(),
-        // randomJoke
       })
     })
   }
@@ -32,19 +37,35 @@ class App extends Component {
     })
   }
 
-  handleChange = (e) => {
-    console.log(e.target.value);
+  // keeps track of clicked likes from the user
+  handleLikes = () => {
+    const likes = this.state.likes + 1;
+    this.setState({
+      likes
+    })
   }
+
+  // keeps track clicked dislikes from the user
+  handleDislikes = () => {
+    const dislikes = this.state.dislikes - 1;
+    this.setState({
+      dislikes
+    })
+  }
+
+  // a function that counts the total likes and dislikes  
+  handleTotal = () => {
+    const total = this.state.likes - this.state.dislikes;
+    this.setState({
+      total
+    })
+  }
+
 
   render() {
     return (
       <div className="App">
-        <header>
-          <h1><span>🤓</span>Talk Nerdy To Me<span>🤓</span></h1>
-          <div className="buttonContainer">
-            <button type="button" className="btn" onClick={this.randomizeJoke}>Tell Me A Joke</button>
-          </div>
-        </header>
+        <Header randomizeJoke={this.randomizeJoke} />
         <section>
           {
             // conditional render 
@@ -53,11 +74,7 @@ class App extends Component {
               <div className="wrapper">
                 <p className="question">Q:{this.state.randomJoke.question}</p>
                 <p className="answer">A:{this.state.randomJoke.answer}</p>
-
-                <section className="reactions">
-                  <button onClick={this.handleChange}><i className="icon like is-large"></i></button>
-                  <button onClick={this.handleChange}><i className="icon like is-large flip"></i></button>
-                </section>
+                <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
               </div>
             )
           }

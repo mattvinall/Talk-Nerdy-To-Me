@@ -56,13 +56,9 @@ p {
   padding-top: 25px;
 }
 
-i {
-  margin: 0 20px;
-}
-
 .flip {
   transform: rotate(180deg);
-  padding-left: 50px;
+  margin-left: 50px;
 }
 
 .reactions {

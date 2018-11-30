@@ -1,34 +1,50 @@
 [
     {
         "question": "Why did the web designer drown?",
-        "answer": "She didn’t know if she should float:left or float:right"
+        "answer": "She didn’t know if she should float:left or float:right",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "Why was the web developer fired from his job?",
-        "answer": "They were getting to SASSy"
+        "answer": "They were getting to SASSy",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "what does a developer do at the end of a group project?",
-        "answer": "gits committed"
+        "answer": "gits committed",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "What is HackerYou's favourite react expression?",
-        "answer": "DIV DADDDIII"
+        "answer": "DIV DADDDIII",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "How do you comfort a javascript bug?",
-        "answer": "You console it"
+        "answer": "You console it",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "Why did the Web Developer pay an extra few bucks to their hosting provider?",
-        "answer": "Because he heard that he should always tip his server"
+        "answer": "Because he heard that he should always tip his server",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "How does Javascript call its Mommy",
-        "answer": "ecMA"
+        "answer": "ecMA",
+        "likes": 0,
+        "dislikes": 0
     },
     {
         "question": "What did the Front-End Web Developer do when he got to the beach?",
-        "answer": "Display: flex"
+        "answer": "Display: flex",
+        "likes": 0,
+        "dislikes": 0
     }
 ]
