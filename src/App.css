@@ -7,13 +7,33 @@ html, body {
 }
 
 body {
-  background: url(./assets/desktop.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: 100px;
-  background-position-y: -75px;
-  background-color: #232323;
   color: #fff;
+}
+
+/* The device with borders */
+.tablet {
+  position: relative;
+  width: 768px;
+  height: 1050px;
+  margin: auto;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+  background-color: #232323;
+}
+
+.tablet:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: absolute;
+  top: -30px;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
 }
 
 h1, h2, h3, p, {
@@ -33,7 +53,7 @@ header {
 }
 
 .wrapper {
-  max-width: 50%;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -66,3 +86,5 @@ p {
   justify-content: center;
   margin: 20px;
 }
+
+

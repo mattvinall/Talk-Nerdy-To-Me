@@ -24,12 +24,17 @@ class App extends Component {
   componentDidMount() {
     // snapshot of values in firebase
     dbRef.on('value', (snapshot) => {
+      console.log('snapshot ran')
+      const jokesArray = snapshot.val();
+      const currentJoke = this.state.randomJoke !== null ? jokesArray[this.state.randomJoke.id] : null;
       this.setState({
         jokes: snapshot.val(),
+        randomJoke: currentJoke
       })
     })
   }
 
+  // Generates a random joke from the jokes array
   randomizeJoke = () => {
     const randomJoke = this.state.jokes[Math.floor(Math.random() * this.state.jokes.length)];
     this.setState({
@@ -39,18 +44,17 @@ class App extends Component {
 
   // keeps track of clicked likes from the user
   handleLikes = () => {
-    const likes = this.state.likes + 1;
-    this.setState({
-      likes
-    })
+    const likes = this.state.randomJoke.likes + 1;
+    // console.log(this.state.randomJoke.id, likes);
+    firebase.database().ref(`/${this.state.randomJoke.id}/likes`).set(likes)
   }
 
   // keeps track clicked dislikes from the user
   handleDislikes = () => {
     const dislikes = this.state.dislikes - 1;
-    this.setState({
-      dislikes
-    })
+    console.log(this.state.randomJoke.id, dislikes);
+    firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes)
+
   }
 
   // a function that counts the total likes and dislikes  
@@ -65,20 +69,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header randomizeJoke={this.randomizeJoke} />
-        <section>
-          {
-            // conditional render 
-            this.state.randomJoke !== null &&
-            (
-              <div className="wrapper">
-                <p className="question">Q:{this.state.randomJoke.question}</p>
-                <p className="answer">A:{this.state.randomJoke.answer}</p>
-                <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
-              </div>
-            )
-          }
-        </section>
+        <div class="tablet">
+          <div class="content">
+            <Header randomizeJoke={this.randomizeJoke} />
+            <section>
+              {
+                // conditional render 
+                this.state.randomJoke !== null &&
+                (
+                  <div className="wrapper">
+                    <p className="question">Q:{this.state.randomJoke.question}</p>
+                    <p className="answer">A:{this.state.randomJoke.answer}</p>
+                    <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
+                    <p>{this.state.randomJoke.likes}</p>
+                  </div>
+                )
+              }
+            </section>
+          </div>
+        </div>
       </div>
     );
   }
