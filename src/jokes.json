@@ -3,48 +3,144 @@
         "question": "Why did the web designer drown?",
         "answer": "She didn’t know if she should float:left or float:right",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 0
     },
     {
         "question": "Why was the web developer fired from his job?",
         "answer": "They were getting to SASSy",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 1
     },
     {
         "question": "what does a developer do at the end of a group project?",
         "answer": "gits committed",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 2
     },
     {
         "question": "What is HackerYou's favourite react expression?",
         "answer": "DIV DADDDIII",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 3
     },
     {
         "question": "How do you comfort a javascript bug?",
         "answer": "You console it",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 4
     },
     {
         "question": "Why did the Web Developer pay an extra few bucks to their hosting provider?",
         "answer": "Because he heard that he should always tip his server",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 5
     },
     {
-        "question": "How does Javascript call its Mommy",
-        "answer": "ecMA",
+        "question": "How did pirates collab before computers",
+        "answer": "Pier to Pier programming",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 6
     },
     {
         "question": "What did the Front-End Web Developer do when he got to the beach?",
         "answer": "Display: flex",
         "likes": 0,
-        "dislikes": 0
+        "dislikes": 0,
+        "total": 0,
+        "id": 7
+    },
+    {
+        "question": "Why did the developers go broke?",
+        "answer": "they used up all their cache",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 8
+    },
+    {
+        "question": "Why was the Javascript developer sad?",
+        "answer": "Because they didn't NODE how to express themself",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 9
+    },
+    {
+        "question": "How did the Javascript developer get lost?",
+        "answer": "Forgot how to use map",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 10
+    },
+    {
+        "question": "What is the object-oriented way to become weathy",
+        "answer": "Inheritance",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 11
+    },
+    {
+        "question": "Why did the programmer quit their job?",
+        "answer": "Didn't get arrays",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 12
+    },
+    {
+        "question": "The developer successfully completed a react project",
+        "answer": "PROPS",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 13
+    },
+    {
+        "question": "Why are so many react developers anarchists?",
+        "answer": "Because they want to keep everything stateless",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 14
+    },
+    {
+        "question": "What did the Front-End Web Developer do when he got to the beach?",
+        "answer": "Display: flex",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 15
+    },
+    {
+        "question": "What did Javascript call his son",
+        "answer": "JSON",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 16
+    },
+    {
+        "question": "Why was the function sad after the first call",
+        "answer": "Didn't get a callback",
+        "likes": 0,
+        "dislikes": 0,
+        "total": 0,
+        "id": 17
     }
 ]
