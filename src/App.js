@@ -24,15 +24,24 @@ class App extends Component {
   componentDidMount() {
     // snapshot of values in firebase
     dbRef.on('value', (snapshot) => {
-      console.log('snapshot ran')
       const jokesArray = snapshot.val();
       const currentJoke = this.state.randomJoke !== null ? jokesArray[this.state.randomJoke.id] : null;
       this.setState({
         jokes: snapshot.val(),
         randomJoke: currentJoke
       })
+
+      const sortedArray = jokesArray.sort((a, b) => {
+        return b.likes - a.likes
+      })
+
+      const mappedArray = sortedArray.map((joke, i) => {
+        console.log(joke[i]);
+      })
+
     })
   }
+
 
   // Generates a random joke from the jokes array
   randomizeJoke = () => {
@@ -45,32 +54,31 @@ class App extends Component {
   // keeps track of clicked likes from the user
   handleLikes = () => {
     const likes = this.state.randomJoke.likes + 1;
-    // console.log(this.state.randomJoke.id, likes);
-    firebase.database().ref(`/${this.state.randomJoke.id}/likes`).set(likes)
+    console.log(this.state.randomJoke);
+    // sets the number of user likes in firebase
+    firebase.database().ref(`/${this.state.randomJoke.id}/likes`).set(likes);
   }
 
   // keeps track clicked dislikes from the user
   handleDislikes = () => {
     const dislikes = this.state.dislikes - 1;
-    console.log(this.state.randomJoke.id, dislikes);
-    firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes)
+    // sets the number of user dislikes in firebase 
+    firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes);
 
   }
 
   // a function that counts the total likes and dislikes  
   handleTotal = () => {
     const total = this.state.likes - this.state.dislikes;
-    this.setState({
-      total
-    })
+    firebase.database().ref(`${this.state.randomJoke.id}/total`).set(total);
   }
 
 
   render() {
     return (
       <div className="App">
-        <div class="tablet">
-          <div class="content">
+        <div className="tablet">
+          <div className="content">
             <Header randomizeJoke={this.randomizeJoke} />
             <section>
               {
@@ -81,7 +89,8 @@ class App extends Component {
                     <p className="question">Q:{this.state.randomJoke.question}</p>
                     <p className="answer">A:{this.state.randomJoke.answer}</p>
                     <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
-                    <p>{this.state.randomJoke.likes}</p>
+                    {/* <p>{this.state.randomJoke.likes}</p>
+                    <p>{this.state.randomJoke.dislikes}</p> */}
                   </div>
                 )
               }
