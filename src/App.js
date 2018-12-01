@@ -31,17 +31,17 @@ class App extends Component {
         randomJoke: currentJoke
       })
 
+      // created a sorted array that sorts which joke has the highest likes, counting for dislikes as well
       const sortedArray = jokesArray.sort((a, b) => {
-        // return b.likes - a.likes
         return (b.likes - b.dislikes) - (a.likes - a.dislikes);
       })
+      // stores the top ranked joke from the first index of the sorted array
       const topRankedJoke = sortedArray[0];
       this.setState({
         first: topRankedJoke,
       })
     })
   }
-
 
   // Generates a random joke from the jokes array
   randomizeJoke = () => {
@@ -66,35 +66,33 @@ class App extends Component {
     firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes);
   }
 
-  // a function that counts the total likes and dislikes  
-  handleTotal = () => {
-    const total = this.state.likes - this.state.dislikes;
-    firebase.database().ref(`${this.state.randomJoke.id}/total`).set(total);
-  }
-
-
   render() {
     return (
       <div className="App">
-        <div className="tablet">
-          <div className="content">
-            <Header randomizeJoke={this.randomizeJoke} />
-            <section>
-              {
-                // conditional render 
-                this.state.randomJoke !== null &&
-                (
-                  <div className="wrapper">
-                    <p className="question">Q:{this.state.randomJoke.question}</p>
-                    <p className="answer">A:{this.state.randomJoke.answer}</p>
-                    <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
-                  </div>
-                )
-              }
-            </section>
-            <h1>Trending Joke</h1>
-            <div className="trending">
-              <p>{this.state.first.question} likes:{this.state.first.likes}</p>
+        <Header randomizeJoke={this.randomizeJoke} />
+        <section>
+          {
+            // conditional render - will only render if randomJoke is NOT null
+            this.state.randomJoke !== null &&
+            (
+              <div className="balloon container with-title wrapper">
+                <div class="message">
+                  <p className="balloon message -left balloon from-left question"><i className="octocat animate icon-left"></i>Q:{this.state.randomJoke.question}</p>
+                  <p className="balloon message -right balloon from-right answer"><i className="octocat animate icon-right"></i>A:{this.state.randomJoke.answer}</p>
+                  <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
+                </div>
+              </div>
+            )
+          }
+        </section>
+
+
+        <div class="wrapper">
+          <div className="trending balloon container with-title">
+            <div className="message">
+              <h2>Trending Joke</h2>
+              <p>{this.state.first.question}</p>
+              <p>likes:{this.state.first.likes}</p>
             </div>
           </div>
         </div>

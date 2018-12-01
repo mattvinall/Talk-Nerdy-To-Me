@@ -11,60 +11,26 @@ body {
   color: #232323;
 }
 
-.tablet {
-  position: relative;
-  width: 768px;
-  height: 1024px;
-  margin: auto;
-  border: 16px black solid;
-  border-top-width: 60px;
-  border-bottom-width: 60px;
-  border-radius: 36px;
-}
-
-/* The horizontal line on the top of the device */
-.tablet:before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 5px;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #333;
-  border-radius: 10px;
-}
-
-/* The circle on the bottom of the device */
-.tablet:after {
-  content: '';
-  display: block;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 50%;
-  bottom: -65px;
-  transform: translate(-50%, -50%);
-  background: #333;
-  border-radius: 50%;
-}
-
 h1, h2, h3, p, {
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: center;
   margin-top: 50px;
   padding-bottom: 25px;
 }
 
-header {
-  margin-top: 10%;
+h2 {
+  font-size: 3.5rem;
+  text-align: center;
 }
+
+/* header {
+  margin-top: 5%;
+} */
 
 .wrapper {
   max-width: 90%;
@@ -79,15 +45,18 @@ header {
 .btn {
   font-family: 'Press Start 2P';
   text-align: center;
-  padding: 20px 40px;
   font-size: 1.5rem;
+  margin-bottom: 50px;
+  padding: 25px 50px;
 }
 
 p {
   font-size: 2.5rem;
-  margin-left: 12%;
   margin-top: 25px;
-  padding-top: 25px;
+}
+
+p.question {
+  padding-left: 25px;
 }
 
 .flip {
@@ -97,8 +66,31 @@ p {
 
 .reactions {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  margin-top: 50px;
+}
+
+.question,
+.answer {
+  width: 50%;
+}
+
+.answer {
+  float: right;
+}
+
+.icon-left {
+  float: left;
+  position: relative;
+  right: 25px;
+}
+
+.icon-right {
+  float: right;
+}
+
+.trending {
+  margin-top: 50px;
+  text-align: center;
 }
 
 
