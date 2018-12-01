@@ -17,7 +17,9 @@ class App extends Component {
       randomJoke: null,
       likes: 0, // set initial state to 0 ++ will increment when user clicks (thumbs up)
       dislikes: 0, // set initial state to 0 -- will decremement when user clicks (thumbs down)
-      total: 0
+      first: {}, //keeps track of first ranked joke
+      second: {}, //keeps track of second ranked joke
+      third: {} // keeps track of third ranked joke
     }
   }
 
@@ -34,11 +36,15 @@ class App extends Component {
       const sortedArray = jokesArray.sort((a, b) => {
         return b.likes - a.likes
       })
-
-      const mappedArray = sortedArray.map((joke, i) => {
-        console.log(joke[i]);
+      console.log(sortedArray);
+      const topRankedJoke = sortedArray[0];
+      const secondRankedJoke = sortedArray[1];
+      const thirdRankedJoke = sortedArray[2];
+      this.setState({
+        first: topRankedJoke,
+        second: secondRankedJoke,
+        third: thirdRankedJoke
       })
-
     })
   }
 
@@ -54,17 +60,15 @@ class App extends Component {
   // keeps track of clicked likes from the user
   handleLikes = () => {
     const likes = this.state.randomJoke.likes + 1;
-    console.log(this.state.randomJoke);
     // sets the number of user likes in firebase
     firebase.database().ref(`/${this.state.randomJoke.id}/likes`).set(likes);
   }
 
   // keeps track clicked dislikes from the user
   handleDislikes = () => {
-    const dislikes = this.state.dislikes - 1;
+    const dislikes = this.state.dislikes + 1;
     // sets the number of user dislikes in firebase 
     firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes);
-
   }
 
   // a function that counts the total likes and dislikes  
@@ -89,11 +93,14 @@ class App extends Component {
                     <p className="question">Q:{this.state.randomJoke.question}</p>
                     <p className="answer">A:{this.state.randomJoke.answer}</p>
                     <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
-                    {/* <p>{this.state.randomJoke.likes}</p>
-                    <p>{this.state.randomJoke.dislikes}</p> */}
                   </div>
                 )
               }
+            </section>
+            <section>
+              <p>{this.state.first.question}</p>
+              <p>{this.state.second.question}</p>
+              <p>{this.state.third.question}</p>
             </section>
           </div>
         </div>
