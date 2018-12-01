@@ -17,9 +17,7 @@ class App extends Component {
       randomJoke: null,
       likes: 0, // set initial state to 0 ++ will increment when user clicks (thumbs up)
       dislikes: 0, // set initial state to 0 -- will decremement when user clicks (thumbs down)
-      first: {}, //keeps track of first ranked joke
-      second: {}, //keeps track of second ranked joke
-      third: {} // keeps track of third ranked joke
+      first: {}, //keeps track of trending joke
     }
   }
 
@@ -34,16 +32,12 @@ class App extends Component {
       })
 
       const sortedArray = jokesArray.sort((a, b) => {
-        return b.likes - a.likes
+        // return b.likes - a.likes
+        return (b.likes - b.dislikes) - (a.likes - a.dislikes);
       })
-      console.log(sortedArray);
       const topRankedJoke = sortedArray[0];
-      const secondRankedJoke = sortedArray[1];
-      const thirdRankedJoke = sortedArray[2];
       this.setState({
         first: topRankedJoke,
-        second: secondRankedJoke,
-        third: thirdRankedJoke
       })
     })
   }
@@ -66,7 +60,8 @@ class App extends Component {
 
   // keeps track clicked dislikes from the user
   handleDislikes = () => {
-    const dislikes = this.state.dislikes + 1;
+    const dislikes = this.state.randomJoke.dislikes + 1;
+    console.log(dislikes);
     // sets the number of user dislikes in firebase 
     firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes);
   }
@@ -97,11 +92,10 @@ class App extends Component {
                 )
               }
             </section>
-            <section>
-              <p>{this.state.first.question}</p>
-              <p>{this.state.second.question}</p>
-              <p>{this.state.third.question}</p>
-            </section>
+            <h1>Trending Joke</h1>
+            <div className="trending">
+              <p>{this.state.first.question} likes:{this.state.first.likes}</p>
+            </div>
           </div>
         </div>
       </div>
