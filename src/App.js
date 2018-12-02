@@ -61,7 +61,6 @@ class App extends Component {
   // keeps track clicked dislikes from the user
   handleDislikes = () => {
     const dislikes = this.state.randomJoke.dislikes + 1;
-    console.log(dislikes);
     // sets the number of user dislikes in firebase 
     firebase.database().ref(`${this.state.randomJoke.id}/dislikes`).set(dislikes);
   }
@@ -76,9 +75,9 @@ class App extends Component {
             this.state.randomJoke !== null &&
             (
               <div className="balloon container with-title wrapper">
-                <div class="message">
+                <div className="message">
                   <p className="balloon message -left balloon from-left question"><i className="octocat animate icon-left"></i>Q:{this.state.randomJoke.question}</p>
-                  <p className="balloon message -right balloon from-right answer"><i className="octocat animate icon-right"></i>A:{this.state.randomJoke.answer}</p>
+                  <p className="balloon message -right balloon from-right answer"><i className="icon github is-large icon-right"></i>A:{this.state.randomJoke.answer}</p>
                   <Reactions handleLikes={this.handleLikes} handleDislikes={this.handleDislikes} />
                 </div>
               </div>
@@ -87,12 +86,13 @@ class App extends Component {
         </section>
 
 
-        <div class="wrapper">
+        <div className="wrapper">
           <div className="trending balloon container with-title">
             <div className="message">
-              <h2>Trending Joke</h2>
-              <p>{this.state.first.question}</p>
-              <p>likes:{this.state.first.likes}</p>
+              <h2><i className="icon star is-medium icon star is-small"></i>Trending Joke<i className="icon star is-medium"></i></h2>
+              <p>Q:{this.state.first.question}</p>
+              <p>A:{this.state.first.answer}</p>
+              <p><i className="icon heart is-medium"></i>likes:{this.state.first.likes}</p>
             </div>
           </div>
         </div>
