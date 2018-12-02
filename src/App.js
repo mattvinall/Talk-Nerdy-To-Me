@@ -4,7 +4,6 @@ import firebase from "./firebase";
 import Header from "./Header";
 import Reactions from './Reactions';
 
-
 // GIMME DA ROOT GIMME DA ROOT 
 const dbRef = firebase.database().ref();
 
@@ -84,7 +83,6 @@ class App extends Component {
             )
           }
         </section>
-
 
         <div className="wrapper">
           <div className="trending balloon container with-title">

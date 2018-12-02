@@ -126,6 +126,10 @@ p.question {
   .is-medium {
     display: inline-block;
   }
+  
+  .github {
+    display: inline-block;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -150,4 +154,3 @@ p.question {
     margin-top: 25px;
   }
 }
-
