@@ -102,6 +102,10 @@ p.question {
   display: none;
 }
 
+.star {
+  display: inline-block;
+}
+
 .is-large {
   display: inline-block;
 }
