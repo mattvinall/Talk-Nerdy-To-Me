@@ -106,6 +106,10 @@ p.question {
   display: inline-block;
 }
 
+.heart {
+  display: inline-block;
+}
+
 .is-large {
   display: inline-block;
 }
